@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import { RouterProvider } from "react-router-dom/dom";
-import MainLayout from "./assets/layout/MainLayout";
-import AuthLayout from "./assets/layout/AuthLayout";
+import { RouterProvider } from "react-router-dom";
+import MainLayout from "./assets/layout/MainLayout.jsx";
+import AuthLayout from "./assets/layout/AuthLayout.jsx";
 import Home from './assets/pages/home/Home.jsx';
-import Cart from './assets/pages/Cart/cart.jsx';
-import Login from './pages/login/Login';
-import Register from './pages/register/Register';
+import Cart from './assets/pages/cart/Cart.jsx';
+import Login from './assets/pages/login/Login.jsx';
+import Register from './assets/pages/register/Register.jsx';
 const router = createBrowserRouter([
     {
         path: "/",
