@@ -6,6 +6,8 @@ import Home from './assets/pages/home/Home.jsx';
 import Cart from './assets/pages/cart/Cart.jsx';
 import Login from './assets/pages/login/Login.jsx';
 import Register from './assets/pages/register/Register.jsx';
+import SendCode  from './assets/pages/sendcode/SendCode.jsx';
+import ResetPassword from "./assets/pages/resetpassword/ResetPassword.jsx";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -32,7 +34,16 @@ const router = createBrowserRouter([
             {
                 path: "register",
                 element: <Register />
+            },
+            {
+                path: "sendcode",
+                element: <SendCode />
+            },
+            {
+                path: "resetpassword",
+                element: <ResetPassword />
             }
+
         ],
     },
 ]);
