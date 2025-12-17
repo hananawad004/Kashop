@@ -1,28 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import axiosInstance from '../../../API/axiosInstance';
 import style from './Categories.module.css';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
-
+import { CircularProgress, Typography } from '@mui/material';
+// import useCategories from '../../../hooks/useCategories';
+ import useCategories from './../../../hooks/useCategories'
 function Categories() {
-    const [categories, setCategories] = useState([]);
-
-    useEffect(() => {
-        getCategories();
-    }, []);
-
-    const getCategories = async () => {
-        try {
-            const res = await axiosInstance.get('/Categories');
-            setCategories(res.data);
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
+    const { isLoading, isError, data } = useCategories();
+    if (isLoading) return <CircularProgress></CircularProgress>
+    if (isError) return <Typography>error</Typography>
     return (
         <section className={style.categoriesSection}>
             <h2 className={style.title}>Top Categories</h2>
@@ -38,7 +25,7 @@ function Categories() {
                     1024: { slidesPerView: 4 },
                 }}
             >
-                {categories.map((cat) => (
+                {data.map((cat) => (
                     <SwiperSlide key={cat.id}>
                         <div className={style.categoryCard}>
                             <span className={style.badge}>10 </span>
