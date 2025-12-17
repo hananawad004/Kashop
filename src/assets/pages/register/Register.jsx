@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { useState } from 'react';
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import axios from 'axios'
 import { registerSchema } from '../../../validations/RegisterSchema';
+import axiosInstance from '../../../API/axiosInstance';
 
 function Register() {
   const [serverErrors, setServerErrors] = useState([]);
@@ -16,7 +16,7 @@ function Register() {
   const registerForm = async (values) => {
 
     try {
-      const response = await axios.post('https://knowledgeshop.runasp.net/api/Auth/Account/Register', values);
+      const response = await axiosInstance.post('/api/Auth/Account/Register', values);
       console.log(response);
     }
     catch (err) {

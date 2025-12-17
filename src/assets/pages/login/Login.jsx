@@ -1,14 +1,15 @@
 import { Paper, TextField, Typography, Box, Button } from '@mui/material';
 import { Link } from "react-router-dom";
 import React from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import { useState } from 'react';
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { loginSchema } from '../../../validations/LoginSchema';
+import axiosInstance from '../../../API/axiosInstance';
 function Login() {
   const [serverErrors, setServerErrors] = useState([]);
-  const { register, handleSubmit, formState: { errors , isSubmitting } } = useForm({
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
     resolver: yupResolver(loginSchema),
     mode: "onBlur"
   });
@@ -17,7 +18,7 @@ function Login() {
     console.log(values);
 
     try {
-      const response = await axios.post('https://knowledgeshop.runasp.net/api/Auth/Account/Login', values);
+      const response = await axiosInstance.post('/Auth/Account/Login', values);
       if (response.status == 200) {
         console.log(response);
         localStorage.setItem("token", response.data.accessToken);
@@ -43,7 +44,7 @@ function Login() {
           <TextField label="Password" {...register("password")} fullWidth variant="outlined" error={errors.password} helperText={errors.password?.message}  ></TextField>
           <Button type="submit" variant="contained" disabled={isSubmitting} sx={{ mt: 2, py: 1.4, fontSize: "16px", backgroundColor: "#ff6b6b", borderRadius: "10px", fontWeight: 600, "&:hover": { backgroundColor: "#ff5252" } }}>Login</Button>
         </Box>
-        <Typography sx={{ mt: 3, textAlign: "center" }}><Link to ="/auth/sendcode" underline="hover" sx={{ color: "#ff6b6b", fontWeight: 600 }}>Forgett Password?</Link></Typography>
+        <Typography sx={{ mt: 3, textAlign: "center" }}><Link to="/auth/sendcode" underline="hover" sx={{ color: "#ff6b6b", fontWeight: 600 }}>Forgett Password?</Link></Typography>
 
       </Paper>
     </Box>

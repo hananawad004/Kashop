@@ -3,26 +3,23 @@ import { Box, Button, Paper, Typography, TextField } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import * as yup from 'yup'
 
-const sendCodeSchema = yup.object({
-  email: yup.string().email("Invalid Email").required("Email is required"),
-});
+import axiosInstance from '../../../API/axiosInstance'
+import SendCodeSchema from '../../../validations/SendCodeSchema'
 
 function SendCode() {
   const navigate = useNavigate();
   const [serverErrors, setServerErrors] = useState([]);
 
-  const { register, handleSubmit, formState: { errors , isSubmitting} } = useForm({
-    resolver: yupResolver(sendCodeSchema),
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
+    resolver: yupResolver(SendCodeSchema),
     mode: "onBlur"
   });
 
   const sendCodeForm = async (values) => {
     try {
-      await axios.post(
-        'https://knowledgeshop.runasp.net/api/Auth/Account/SendCode',
+      await axiosInstance.post(
+        '/Auth/Account/SendCode',
         values
       );
 
@@ -56,7 +53,7 @@ function SendCode() {
             helperText={errors.email?.message}
           />
 
-          <Button type="submit" disabled={isSubmitting} fullWidth variant="contained" sx={{ mt: 3 ,backgroundColor: "#ff6b6b" }}>
+          <Button type="submit" disabled={isSubmitting} fullWidth variant="contained" sx={{ mt: 3, backgroundColor: "#ff6b6b" }}>
             Send Code
           </Button>
         </Box>
