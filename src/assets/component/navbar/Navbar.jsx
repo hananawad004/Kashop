@@ -1,10 +1,18 @@
 import React from "react";
 import {
-  AppBar, Toolbar, Box,Typography, Menu, MenuItem,Badge, IconButton,} from "@mui/material";
+  AppBar,
+  Toolbar,
+  Box,
+  Typography,
+  Menu,
+  MenuItem,
+  Badge,
+  IconButton,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
-import styles from "./Navbar.styles"; 
+import styles from "./Navbar.styles";
 
 function Navbar({ categories = [], cartCount = 0 }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -14,7 +22,8 @@ function Navbar({ categories = [], cartCount = 0 }) {
     <AppBar
       position="static"
       sx={{
-        background: "linear-gradient(90deg, #ff9a9e 0%, #ff6b6b 50%, #c74a4a 100%)",
+        background:
+          "linear-gradient(90deg, #ff9a9e 0%, #ff6b6b 50%, #c74a4a 100%)",
         boxShadow: "none",
       }}
     >
@@ -41,6 +50,7 @@ function Navbar({ categories = [], cartCount = 0 }) {
           <NavItem text="Pages" to="/pages" />
           <NavItem text="Blog" to="/blog" />
           <NavItem text="Contact" to="/contact" />
+          <NavItem text="Register" to="auth/register" /> {/* ✅ Register */}
         </Box>
 
         {/* Cart Icon */}
@@ -55,7 +65,9 @@ function Navbar({ categories = [], cartCount = 0 }) {
           anchorEl={anchorEl}
           open={open}
           onClose={() => setAnchorEl(null)}
-          MenuListProps={{ onMouseLeave: () => setAnchorEl(null) }}
+          MenuListProps={{
+            onMouseLeave: () => setAnchorEl(null),
+          }}
           sx={{
             mt: 1,
             "& .MuiPaper-root": {
@@ -75,14 +87,10 @@ function Navbar({ categories = [], cartCount = 0 }) {
   );
 }
 
-/* Nav link */
+/* Nav link component */
 function NavItem({ text, to }) {
   return (
-    <Typography
-      component={Link}
-      to={to}
-      sx={styles.navText}
-    >
+    <Typography component={Link} to={to} sx={styles.navText}>
       {text}
     </Typography>
   );
