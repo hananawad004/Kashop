@@ -4,15 +4,20 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import { CircularProgress, Typography } from '@mui/material';
-// import useCategories from '../../../hooks/useCategories';
- import useCategories from './../../../hooks/useCategories'
+import useCategories from './../../../hooks/useCategories';
+
+
+import categoryImg from '../../../assets/images/category.png';
+
 function Categories() {
     const { isLoading, isError, data } = useCategories();
-    if (isLoading) return <CircularProgress></CircularProgress>
-    if (isError) return <Typography>error</Typography>
+
+    if (isLoading) return <CircularProgress />;
+    if (isError) return <Typography>Error</Typography>;
+
     return (
         <section className={style.categoriesSection}>
-            <h2 className={style.title}>Top Categories</h2>
+            <h2 className={style.title}>Top Categories Book</h2>
 
             <Swiper
                 modules={[Navigation]}
@@ -28,8 +33,15 @@ function Categories() {
                 {data.map((cat) => (
                     <SwiperSlide key={cat.id}>
                         <div className={style.categoryCard}>
-                            <span className={style.badge}>10 </span>
-                            <h4>{cat.name}</h4>
+                            
+                            <div className={style.imageWrapper}>
+                                <img src={categoryImg} alt={cat.name} />
+                                <span className={style.badge}>25 Books</span>
+                            </div>
+
+                            <h4 className={style.categoryName}>
+                                {cat.name}
+                            </h4>
                         </div>
                     </SwiperSlide>
                 ))}

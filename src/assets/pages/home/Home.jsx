@@ -4,7 +4,6 @@ import Categories from '../../component/categories/Categories';
 function Home() {
   return (
     <div>
-    
       <Categories />
     </div>
   )

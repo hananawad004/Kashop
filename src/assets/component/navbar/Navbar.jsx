@@ -1,22 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   AppBar,
   Toolbar,
   Box,
   Typography,
-  Menu,
   MenuItem,
   Badge,
   IconButton,
+  Button,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import styles from "./Navbar.styles";
+import { AuthContext } from "../../../context/AuthContext";
 
 function Navbar({ categories = [], cartCount = 0 }) {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+  const { token, logout } = useContext(AuthContext);
 
   return (
     <AppBar
@@ -27,67 +26,55 @@ function Navbar({ categories = [], cartCount = 0 }) {
         boxShadow: "none",
       }}
     >
-      <Toolbar sx={styles.toolbar}>
-        {/* Logo */}
+      <Toolbar sx={{...styles.toolbar}}>
+      
         <Box sx={styles.logo}>
           <Box sx={styles.logoIcon}>📕</Box>
           <Typography sx={styles.logoText}>Boimela</Typography>
         </Box>
 
-        {/* Menu */}
-        <Box sx={styles.menu}>
-          <NavItem text="Home" to="/home" />
+  
+        <Box sx={{...styles.menu,justifyContent:"center"}}>
+          {token ? (
+            <>
+              <NavItem text="Home" to="/home" />
+              <NavItem text="Pages" to="/pages" />
+              <NavItem text="Blog" to="/blog" />
+              <NavItem text="Contact" to="/contact" />
 
-          {/* Shop Dropdown */}
-          <Box
-            sx={styles.shopDropdown}
-            onMouseEnter={(e) => setAnchorEl(e.currentTarget)}
-          >
-            <Typography sx={styles.navText}>Shop</Typography>
-            <KeyboardArrowDownIcon sx={{ fontSize: 18, color: "#fff" }} />
-          </Box>
-
-          <NavItem text="Pages" to="/pages" />
-          <NavItem text="Blog" to="/blog" />
-          <NavItem text="Contact" to="/contact" />
-          <NavItem text="Register" to="auth/register" /> {/* ✅ Register */}
+              <Button
+                onClick={logout}
+                sx={{ color: "#fff", fontWeight: 600 }}
+              >
+                Logout
+              </Button>
+            </>
+          ) : (
+            <>
+              <NavItem text="Register" to="/auth/register" />
+              <NavItem text="Login" to="/auth/login" />
+            </>
+          )}
         </Box>
 
-        {/* Cart Icon */}
+       
         <IconButton>
           <Badge badgeContent={cartCount} color="error">
             <ShoppingBagOutlinedIcon sx={{ color: "#fff" }} />
           </Badge>
         </IconButton>
 
-        {/* Dropdown Menu */}
-        <Menu
-          anchorEl={anchorEl}
-          open={open}
-          onClose={() => setAnchorEl(null)}
-          MenuListProps={{
-            onMouseLeave: () => setAnchorEl(null),
-          }}
-          sx={{
-            mt: 1,
-            "& .MuiPaper-root": {
-              borderTop: "4px solid #fff",
-              minWidth: 220,
-            },
-          }}
-        >
-          {categories.map((cat) => (
-            <MenuItem key={cat.id} component={Link} to={`/shop/${cat.id}`}>
-              {cat.name}
-            </MenuItem>
-          ))}
-        </Menu>
+    
+        {categories.map((cat) => (
+          <MenuItem key={cat.id} component={Link} to={`/shop/${cat.id}`}>
+            {cat.name}
+          </MenuItem>
+        ))}
       </Toolbar>
     </AppBar>
   );
 }
 
-/* Nav link component */
 function NavItem({ text, to }) {
   return (
     <Typography component={Link} to={to} sx={styles.navText}>
