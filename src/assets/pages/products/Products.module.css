@@ -1,0 +1,84 @@
+.page {
+  display: flex;
+  gap: 40px;
+  padding: 40px;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 280px;
+}
+
+.search {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.sidebar h4 {
+  margin: 20px 0 10px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.list li {
+  padding: 10px 14px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.active {
+  background: #ff7a65;
+  color: white;
+}
+
+/* REVIEWS */
+.reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.reviewBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.activeReview {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #ff7a65;
+  font-weight: bold;
+}
+
+/* RESET */
+.clear {
+  margin-top: 20px;
+  width: 100%;
+  background: #f5f5f5;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* PRODUCTS */
+.productsArea {
+  flex: 1;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}

@@ -8,6 +8,8 @@ import Login from './assets/pages/login/Login.jsx';
 import Register from './assets/pages/register/Register.jsx';
 import SendCode  from './assets/pages/sendcode/SendCode.jsx';
 import ResetPassword from "./assets/pages/resetpassword/ResetPassword.jsx";
+import Products from "./assets/pages/products/Products.jsx";
+import ProductDetails from "./assets/pages/product-details/ProductDetails.jsx";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
             {
                 path: "cart",
                 element: <Cart />
+            },
+              {
+                path: "products",
+                element: <Products />
+            },
+             {
+                path: "product-details/:id",
+                element: <ProductDetails />
             }
         ],
     },
