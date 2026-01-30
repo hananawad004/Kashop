@@ -1,19 +1,23 @@
-import axiosInstance from '../API/axiosInstance';
-import { useQuery } from '@tanstack/react-query';
+
+// import useFetch from "./useFetch";
+
+// export default function useProducts(categoryId) {
+//   const url = categoryId ? `/Products/category/${categoryId}` : `/Products?limit=1000`;
+//   return useFetch(['products', categoryId], url);
+// }
+import { useQuery } from "@tanstack/react-query";
+import axiosAuthInstance from "../API/axiosAuthInstance";
 
 export default function useProducts(categoryId) {
-  const fetchProducts = async () => {
-    const res = await axiosInstance.get('/Products', {
-      params: { limit: 1000, ...(categoryId && { categoryId }) },
-    });
-
-    const products = res?.data?.response?.data || [];
-    return Array.isArray(products) ? products : [];
-  };
+  const url = categoryId ? `/Products/category/${categoryId}` : `/Products?limit=1000`;
 
   return useQuery({
     queryKey: ['products', categoryId],
-    queryFn: fetchProducts,
+    queryFn: async () => {
+      const res = await axiosAuthInstance.get(url);
+    
+      return Array.isArray(res.data?.response?.data) ? res.data.response.data : [];
+    },
     staleTime: 5 * 60 * 1000,
   });
 }

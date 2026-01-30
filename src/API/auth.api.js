@@ -1,20 +1,39 @@
 
 import axiosInstance from "./axiosInstance";
 
-// export const loginRequest = async (credentials) => {
-//   const response = await axiosInstance.post("/auth/Account/Login", credentials);
-//   return response.data;
-// };
 export const loginRequest = async (credentials) => {
-  const response = await axiosInstance.post(
-    "/auth/Account/Login",
-    {
-      userName: credentials.email, // مهم
-      password: credentials.password,
-    }
-  );
+  const response = await axiosInstance.post("/auth/Account/Login", credentials);
   return response.data;
 };
+// export const loginRequest = async (credentials) => {
+//   const response = await axiosInstance.post(
+//     "/auth/Account/Login",
+//     {
+//       userName: credentials.email, // مهم
+//       password: credentials.password,
+//     }
+//   );
+//   return response.data;
+// };
+// auth.mock.js
+// let users = [
+//   { email: "test@example.com", password: "123456", accessToken: "token123" }
+// ];
+
+// export const registerRequest = async ({ email, password }) => {
+//   if (users.find(u => u.email === email)) {
+//     return { success: false, message: "Email already exists" };
+//   }
+//   const token = Math.random().toString(36).substring(2);
+//   users.push({ email, password, accessToken: token });
+//   return { success: true, accessToken: token, message: "Account created!" };
+// };
+
+// export const loginRequest = async ({ email, password }) => {
+//   const user = users.find(u => u.email === email && u.password === password);
+//   if (user) return { success: true, accessToken: user.accessToken };
+//   return { success: false, message: "Invalid email or password" };
+// };
 
 export const registerRequest = async (values) => {
   return new Promise((resolve, reject) => {

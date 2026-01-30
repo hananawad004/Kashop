@@ -11,7 +11,7 @@ import categoryImg from '../../../assets/images/category.png';
 
 function Categories() {
     const { isLoading, isError, data } = useCategories();
-
+{console.log(data)}
     if (isLoading) return <CircularProgress />;
     if (isError) return <Typography>Error</Typography>;
 

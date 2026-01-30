@@ -83,7 +83,7 @@
   font-weight: bold;
 }
 
-.checkout {
+.checkout , .clear {
   margin-top: 20px;
   width: 100%;
   background: #ff7a65;

@@ -1,0 +1,60 @@
+{
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "total": "Total",
+    "clear": "Clear Cart",
+    "checkout": "Proceed To Checkout",
+   " summary":"summary"
+  },
+ 
+  "login": {
+    "title": "Login",
+    "email": "Email",
+    "password": "Password",
+    "forget": "Forget Password?"
+  },
+
+
+  "register": {
+    "title": "Create Account",
+    "username": "User Name",
+    "fullname": "Full Name",
+    "email": "Email",
+    "password": "Password",
+    "phone": "Phone Number",
+    "loginLink": "Already have an account? Login"
+  },
+  
+  "productDetails": {
+    "loading": "Loading...",
+    "notFound": "Product not found!",
+    "noImages": "No additional images",
+    "noDescription": "No description available.",
+    "addToCart": "Add To Cart",
+    "adding": "Adding..."
+  
+},
+
+  "profile": {
+    "title": "Profile",
+    "menu": "Profile Menu",
+    "overview": "Overview",
+    "changePassword": "Change Password",
+    "name": "Name",
+    "email": "Email",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmNewPassword": "Confirm New Password",
+    "processing": "Processing...",
+    "updatePassword": "Update Password",
+    "passwordChanged": "Password updated successfully",
+    "passwordChangeError": "Error updating password",
+    "loading": "Loading profile..."
+  }
+
+
+
+}

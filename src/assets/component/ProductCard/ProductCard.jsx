@@ -1,30 +1,27 @@
-import { useState } from 'react';
-import { Favorite, FavoriteBorder, Visibility } from '@mui/icons-material';
-import { useCart } from '../../../context/CartContext';
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom'; // ← import useNavigate
-import 'react-toastify/dist/ReactToastify.css';
-import style from './ProductCard.module.css';
+import { useState } from "react";
+import { Favorite, FavoriteBorder, Visibility } from "@mui/icons-material";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+import style from "./ProductCard.module.css";
 
-function ProductCard({ product }) {
+function ProductCard({ product, onAddToCart }) {
   const [isFav, setIsFav] = useState(false);
-  const { addToCart } = useCart();
-  const navigate = useNavigate(); // ← hook للتنقل
+  const navigate = useNavigate();
 
-  const handleFavorite = () => setIsFav(prev => !prev);
+  const handleFavorite = () => setIsFav((prev) => !prev);
 
-  const handleAddToCart = () => {
-    addToCart(product);
-    toast.success(`${product.name} added to cart!`, {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      pauseOnHover: true,
-      draggable: true,
-    });
+  const handleAdd = () => {
+    if (onAddToCart) {
+      onAddToCart(); 
+    } else {
+      toast.success(`${product.name} added to cart!`, {
+        position: "top-right",
+        autoClose: 2000,
+      });
+    }
   };
 
-  // ← جديد: عند الضغط على العين
   const handleViewDetails = () => {
     navigate(`/product-details/${product.id}`, { state: { product } });
   };
@@ -42,7 +39,7 @@ function ProductCard({ product }) {
           <button onClick={handleFavorite}>
             {isFav ? <Favorite color="error" /> : <FavoriteBorder />}
           </button>
-          <button onClick={handleViewDetails}> {/* ← هنا */}
+          <button onClick={handleViewDetails}>
             <Visibility />
           </button>
         </div>
@@ -58,7 +55,7 @@ function ProductCard({ product }) {
         {product.oldPrice && <span>${product.oldPrice}</span>}
       </p>
 
-      <button className={style.btn} onClick={handleAddToCart}>
+      <button className={style.btn} onClick={handleAdd}>
         Add To Cart
       </button>
     </div>

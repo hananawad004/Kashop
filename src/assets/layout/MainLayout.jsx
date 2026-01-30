@@ -2,12 +2,19 @@ import React from 'react'
 import Navbar from './../component/navbar/Navbar'
 import Footer from './../component/footer/Footer';
 import { Outlet } from 'react-router-dom';
+import { Container } from '@mui/material';
 
 function MainLayout() {
     return (
         <>
             <Navbar />
-            <Outlet />
+
+        
+                <Outlet />
+       
+
+
+
             <Footer />
         </>
     )
