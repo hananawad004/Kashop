@@ -9,16 +9,15 @@ export const useLoginForm = () => {
   const [serverErrors, setServerErrors] = useState([]);
   const navigate = useNavigate();
 
-  // ⬅️ بدل setAccessToken
   const setAuth = useAuthStore((state) => state.setAuth);
 
   const loginMutation = useLogin({
     onSuccess: (data) => {
-      // حسب API تبعك
+   
       if (data.accessToken) {
         const token = data.accessToken;
 
-        // فك التوكن
+        
         const decoded = jwtDecode(token);
 
         const user = {
@@ -30,7 +29,6 @@ export const useLoginForm = () => {
           ],
         };
 
-        // تخزين التوكن + اليوزر
         setAuth(token, user);
 
         navigate("/home");

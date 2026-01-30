@@ -9,11 +9,11 @@ export default function useCanReview(productId) {
         const { data } = await axiosAuthInstance.get(
           `/Products/${productId}/can-review`
         );
-        return data; // true أو false من السيرفر
+        return data; 
       } catch (err) {
-        // لو السيرفر رجع 404، اعتبر أن المستخدم يقدر يضيف review
+
         if (err?.response?.status === 404) return true;
-        throw err; // أي خطأ آخر نعيده
+        throw err; 
       }
     },
     enabled: !!productId,

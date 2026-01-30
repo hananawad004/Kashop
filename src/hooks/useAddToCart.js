@@ -18,12 +18,3 @@ return useMutation({
 }
  
 
-//   return useMutation({
-//     mutationFn: async ({ ProductId, Count }) => {
-//       await axiosAuthInstance.post("/Carts", { ProductId, Count });
-//     },
-//     onSuccess: () => {
-//       queryClient.invalidateQueries(["cart"]);
-//     },
-//   });
-// }

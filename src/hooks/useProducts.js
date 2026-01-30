@@ -1,10 +1,4 @@
 
-// import useFetch from "./useFetch";
-
-// export default function useProducts(categoryId) {
-//   const url = categoryId ? `/Products/category/${categoryId}` : `/Products?limit=1000`;
-//   return useFetch(['products', categoryId], url);
-// }
 import { useQuery } from "@tanstack/react-query";
 import axiosAuthInstance from "../API/axiosAuthInstance";
 

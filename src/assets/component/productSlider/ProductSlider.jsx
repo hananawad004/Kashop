@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Box, Typography, Container } from '@mui/material';
 import ProductCard from '../ProductCard/ProductCard';
@@ -5,10 +6,26 @@ import useProducts from '../../../hooks/useProducts';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import useAddToCart from '../../../hooks/useAddToCart'; 
 
 function ProductsSlider() {
   const { data } = useProducts();
-  console.log("Products data:", data);
+  const addToCartMutation = useAddToCart(); 
+
+  const handleAddToCart = (product) => {
+    addToCartMutation.mutate(
+      { ProductId: product.id, Count: 1, Price: product.price },
+      {
+        onSuccess: () => {
+          alert(`${product.name} added to cart!`);
+        },
+        onError: () => {
+          alert(`Failed to add ${product.name} to cart`);
+        },
+      }
+    );
+  };
+
   const settings = {
     dots: false,
     infinite: true,
@@ -27,14 +44,18 @@ function ProductsSlider() {
   return (
     <Container maxWidth="lg" sx={{ mt: 8 }}>
       <Typography variant="h5" fontWeight="bold" mb={4} textAlign="center">
-        🔥 New Arrivals
+       New Arrivals
       </Typography>
 
       <Box sx={{ position: 'relative' }}>
         <Slider {...settings}>
           {data?.map(product => (
             <Box key={product.id} px={1}>
-              <ProductCard product={product} />
+          
+              <ProductCard
+                product={product}
+                onAddToCart={() => handleAddToCart(product)}
+              />
             </Box>
           ))}
         </Slider>
