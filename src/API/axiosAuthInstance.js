@@ -31,10 +31,6 @@
 import axios from "axios";
 import { useAuthStore } from "../store/authStore";
 
-/* ===========================
-   INSTANCES
-=========================== */
-
 const axiosAuthInstance = axios.create({
   baseURL: "https://knowledgeshop.runasp.net/api",
   withCredentials: true,
@@ -45,9 +41,6 @@ const axiosRefreshInstance = axios.create({
   withCredentials: true,
 });
 
-/* ===========================
-   REQUEST
-=========================== */
 
 axiosAuthInstance.interceptors.request.use(
   (config) => {
@@ -64,9 +57,7 @@ axiosAuthInstance.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-/* ===========================
-   RESPONSE
-=========================== */
+
 
 axiosAuthInstance.interceptors.response.use(
   (response) => response,

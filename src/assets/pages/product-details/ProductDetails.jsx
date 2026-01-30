@@ -29,7 +29,7 @@ function ProductDetails() {
   if (!product || !product.id)
     return <p className={styles.notFound}>{t("productDetails.notFound")}</p>;
 
-  // إضافة للعربة
+  
   const handleAddToCart = () => {
     addToCartMutation.mutate(
       { ProductId: product.id, Count: quantity, Price: product.price },
@@ -42,24 +42,22 @@ function ProductDetails() {
     );
   };
 
-  // الشيك آوت
   const handleCheckout = () => {
-  // أولا نتأكد أن quantity > 0
+
   if (quantity <= 0) {
     toast.error("Quantity must be at least 1");
     return;
   }
 
-  // أول خطوة: أضف المنتج للعربة أولاً
   addToCartMutation.mutate(
     { ProductId: product.id, Count: quantity, Price: product.price },
     {
       onSuccess: () => {
         toast.success(`Added ${quantity} item(s) to cart`);
 
-        // بعد الإضافة مباشرة، نعمل checkout
+      
         checkoutMutation.mutate(
-          { PaymentMethod: paymentMethod }, // backend يريد فقط PaymentMethod
+          { PaymentMethod: paymentMethod }, 
           {
             onSuccess: (res) => {
               if (res.success) {
@@ -81,7 +79,7 @@ function ProductDetails() {
 };
 
 
-  // إضافة الريفيو
+
 const handleSubmitReview = () => {
   if (!comment.trim()) {
     toast.error("Please write a comment");
@@ -91,8 +89,8 @@ const handleSubmitReview = () => {
   addReviewMutation.mutate(
     {
       productId: product.id,
-      Rating: rating,    // PascalCase
-      Comment: comment,  // PascalCase
+      Rating: rating,  
+      Comment: comment,  
     },
     {
       onSuccess: () => {
@@ -111,7 +109,7 @@ const handleSubmitReview = () => {
 
   return (
     <div className={styles.productDetails}>
-      {/* الصور */}
+   
       <div className={styles.productImages}>
         <img src={product.image} alt={product.name} className={styles.mainImage} />
         <div className={styles.thumbnailList}>
@@ -125,7 +123,6 @@ const handleSubmitReview = () => {
         </div>
       </div>
 
-      {/* المعلومات */}
       <div className={styles.productInfo}>
         <h1 className={styles.title}>{product.name}</h1>
         <p className={styles.price}>${product.price}</p>

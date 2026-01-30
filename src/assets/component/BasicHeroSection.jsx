@@ -12,7 +12,7 @@ function BasicHeroSection() {
         position: "relative",
         width: "100%",
         height: { xs: 420, md: 520 },
-        mt: { xs: 8, md: 10 }, // 👈 مسافة عن الناف
+        mt: { xs: 8, md: 10 }, 
         display: "flex",
         alignItems: "center",
         background:

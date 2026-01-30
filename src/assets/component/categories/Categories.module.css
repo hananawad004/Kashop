@@ -11,7 +11,7 @@
     color: #857e7ee5;
 }
 
-/* الكرت */
+
 .categoryCard {
     background: #fff;
     border-radius: 20px;
@@ -25,7 +25,6 @@
     transform: translateY(-8px);
 }
 
-/* الصورة */
 .imageWrapper {
     position: relative;
     margin-bottom: 15px;
@@ -41,7 +40,7 @@
 }
 
 
-/* Badge */
+
 .badge {
     position: absolute;
     bottom: -12px;
@@ -55,7 +54,7 @@
     font-weight: 600;
 }
 
-/* اسم الكاتيجوري */
+
 .categoryName {
     margin-top: 20px;
     font-size: 18px;
