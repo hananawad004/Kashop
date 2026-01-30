@@ -73,7 +73,9 @@ import MainLayout from "./assets/layout/MainLayout.jsx";
 import AuthLayout from "./assets/layout/AuthLayout.jsx";
 import Home from './assets/pages/home/Home.jsx';
 import Cart from './assets/pages/cart/Cart.jsx';
-import Profile from "./assets/pages/profile/profile.jsx";
+import Profile from "./assets/pages/profile/Profile.jsx";
+// import Profile from "./assets/pages/profile/Profile.jsx";
+
 import ProfileOverview from './assets/pages/profile/ProfileOverview.jsx';
 import ChangePassword from './assets/pages/profile/ChangePassword.jsx';
 import Login from './assets/pages/login/Login.jsx';
