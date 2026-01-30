@@ -16,6 +16,9 @@ import {
 import { Link } from "react-router-dom";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import styles from "./Navbar.styles";
+import { useNavigate } from "react-router-dom";
+
+
 
 import { useAuthStore } from "../../../store/authStore";
 import { useCartStore } from "../../../store/cartStore";
@@ -39,7 +42,7 @@ function Navbar() {
   const closeProfileMenu = () => setProfileAnchor(null);
 
   const { toggleTheme, mode } = useThemeContext();
-
+const navigate = useNavigate();
   return (
     <AppBar position="static" sx={styles.appBar}>
       <Toolbar sx={styles.toolbar}>
@@ -121,7 +124,12 @@ function Navbar() {
                 <MenuItem component={Link} to="/profile/change-password" onClick={closeProfileMenu}>
                   Change Password
                 </MenuItem>
-                <MenuItem onClick={() => { logout(); closeProfileMenu(); }}>
+
+                <MenuItem onClick={() => {
+                  logout();             
+                  closeProfileMenu();    
+                  navigate("auth/login", { replace: true });
+                }}>
                   Logout
                 </MenuItem>
               </Menu>

@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "../../../LanguageSwitcher";
 
 function Login() {
-  const { t } = useTranslation(); // ⚡ useTranslation hook
+  const { t } = useTranslation(); 
   const { serverErrors, loginMutation } = useLoginForm();
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(loginSchema),

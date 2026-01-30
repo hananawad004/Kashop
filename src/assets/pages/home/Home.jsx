@@ -7,7 +7,7 @@ import HeroSection from '../../component/HeroSection/HeroSection';
 import LatestNewsSection from '../../component/LatestNewsSection';
 import BasicHeroSection from '../../component/BasicHeroSection';
 function Home() {
-  // const { t } = useTranslation();
+  
 
   return (
     <div>

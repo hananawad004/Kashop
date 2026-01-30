@@ -42,10 +42,10 @@ function LatestNewsSection() {
       <Box sx={{ maxWidth: "1400px", mx: "auto", px: 3 }}>
         {/* Header */}
         <Box textAlign="center" mb={8}>
-          <Typography variant="h4" fontWeight="bold" mb={2}>
+          <Typography variant="h4" fontWeight="bold" mb={2}  sx={{ color: "#ccc" }}>
             Our Latest News
           </Typography>
-          <Typography color="text.secondary" maxWidth={600} mx="auto">
+          <Typography color="text.secondary" maxWidth={600} mx="auto"  sx={{ color: "#ccc" }}>
             Interdum et malesuada fames ac ante ipsum primis in faucibus.
             Donec at nulla nulla. Duis posuere ex lacus.
           </Typography>
@@ -66,8 +66,8 @@ function LatestNewsSection() {
               key={item.id}
               elevation={3}
               sx={{
-                minWidth: 300, // نفس الحجم للجميع
-                flex: "1 0 25%", // 4 في صف واحد
+                minWidth: 300, 
+                flex: "1 0 25%", 
                 borderRadius: 3,
                 overflow: "hidden",
                 display: "flex",
@@ -103,15 +103,15 @@ function LatestNewsSection() {
               {/* Content */}
               <Box p={3} flexGrow={1} display="flex" flexDirection="column">
                 <Stack direction="row" spacing={2} mb={1} flexWrap="wrap">
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary"  sx={{ color: "#ccc" }}>
                     📅 {item.date}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary"  sx={{ color: "#ccc" }}>
                     👤 By {item.author}
                   </Typography>
                 </Stack>
 
-                <Typography variant="h6" fontWeight={600} mb={2}>
+                <Typography variant="h6" fontWeight={600} mb={2}  sx={{ color: "#ccc" }}>
                   {item.title}
                 </Typography>
 

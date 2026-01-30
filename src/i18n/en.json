@@ -7,17 +7,15 @@
     "total": "Total",
     "clear": "Clear Cart",
     "checkout": "Proceed To Checkout",
-   " summary":"summary"
+    "summary": "Summary",
+    "free" :"free"
   },
- 
   "login": {
     "title": "Login",
     "email": "Email",
     "password": "Password",
     "forget": "Forget Password?"
   },
-
-
   "register": {
     "title": "Create Account",
     "username": "User Name",
@@ -27,7 +25,6 @@
     "phone": "Phone Number",
     "loginLink": "Already have an account? Login"
   },
-  
   "productDetails": {
     "loading": "Loading...",
     "notFound": "Product not found!",
@@ -35,9 +32,7 @@
     "noDescription": "No description available.",
     "addToCart": "Add To Cart",
     "adding": "Adding..."
-  
-},
-
+  },
   "profile": {
     "title": "Profile",
     "menu": "Profile Menu",
@@ -53,8 +48,36 @@
     "passwordChanged": "Password updated successfully",
     "passwordChangeError": "Error updating password",
     "loading": "Loading profile..."
-  }
-
+  },
+  
+  "latestNews": "Our Latest News",
+  "intro": "Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec at nulla nulla. Duis posuere ex lacus.",
+  "posts": [
+    {
+      "title": "Montes Suspendisse Massa Curae Malesuada",
+      "category": "Activities",
+      "date": "📅 Feb 10, 2024",
+      "author": "👤 By Admin"
+    },
+    {
+      "title": "Playful Picks Paradise: Kids’ Essentials With Dash.",
+      "category": "Activities",
+      "date": "📅 Mar 20, 2024",
+      "author": "👤 By Admin"
+    },
+    {
+      "title": "Tiny Emporium: Playful Picks For Kids’ Delightful Days.",
+      "category": "Activities",
+      "date": "📅 Jun 14, 2024",
+      "author": "👤 By Admin"
+    },
+    {
+      "title": "Eu Parturient Dictumst",
+      "category": "Activities",
+      "date": "📅 Mar 12, 2024",
+      "author": "👤 By Admin"
+    }
+  ]
 
 
 }
